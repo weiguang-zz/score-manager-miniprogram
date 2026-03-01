@@ -1,4 +1,4 @@
-var BASE_URL = 'http://localhost:8000'
+var BASE_URL = 'https://score-manager.umember.cn'
 
 function getToken() {
   return wx.getStorageSync('token') || ''
