@@ -1,0 +1,46 @@
+<navigation-bar title="{{name}}" />
+
+<view class="container">
+  <!-- 积分卡片 -->
+  <view class="score-card">
+    <text class="score-value {{currentScore >= 0 ? 'positive' : 'negative'}}">
+      {{currentScore}}
+    </text>
+    <text class="score-title">当前积分</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-bar">
+    <button class="btn btn-primary" bindtap="goAddRecord">+ 变更积分</button>
+    <button class="btn btn-outline" bindtap="exportRecords">导出记录</button>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="section-title">变更记录</view>
+
+  <view wx:if="{{records.length === 0}}" class="empty">
+    <text class="empty-text">暂无记录</text>
+  </view>
+
+  <view wx:else class="timeline">
+    <view wx:for="{{records}}" wx:key="id" class="record-item">
+      <view class="record-left">
+        <view class="dot {{item.change_amount >= 0 ? 'dot-green' : 'dot-red'}}"></view>
+        <view wx:if="{{index < records.length - 1}}" class="line"></view>
+      </view>
+      <view class="record-content">
+        <view class="record-header">
+          <text class="change {{item.change_amount >= 0 ? 'positive' : 'negative'}}">
+            {{item.change_amount >= 0 ? '+' : ''}}{{item.change_amount}}
+          </text>
+          <text class="balance">余额: {{item.balance_after}}</text>
+        </view>
+        <text wx:if="{{item.reason}}" class="reason">{{item.reason}}</text>
+        <text class="time">{{item.created_at}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 删除按钮 -->
+  <button class="btn-danger" bindtap="handleDelete">删除该成员</button>
+</view>

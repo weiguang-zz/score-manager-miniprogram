@@ -1,0 +1,52 @@
+<navigation-bar title="积分变更 - {{memberName}}" />
+
+<view class="container">
+  <!-- 类型选择 -->
+  <view class="type-switch">
+    <view
+      class="type-btn {{isAdd ? 'active-add' : ''}}"
+      bindtap="switchType"
+      data-type="add"
+    >
+      + 增加
+    </view>
+    <view
+      class="type-btn {{!isAdd ? 'active-sub' : ''}}"
+      bindtap="switchType"
+      data-type="sub"
+    >
+      - 减少
+    </view>
+  </view>
+
+  <view class="form">
+    <view class="form-item">
+      <text class="label">数值</text>
+      <input
+        class="input"
+        type="number"
+        placeholder="请输入变更数值"
+        value="{{amount}}"
+        bindinput="onAmountInput"
+      />
+    </view>
+    <view class="form-item">
+      <text class="label">原因（选填）</text>
+      <textarea
+        class="textarea"
+        placeholder="请输入变更原因"
+        value="{{reason}}"
+        bindinput="onReasonInput"
+        maxlength="200"
+      />
+    </view>
+    <button
+      class="btn-submit {{isAdd ? 'btn-add' : 'btn-sub'}}"
+      bindtap="handleSubmit"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+    >
+      确认{{isAdd ? '增加' : '减少'}}
+    </button>
+  </view>
+</view>

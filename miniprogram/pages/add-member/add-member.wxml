@@ -1,0 +1,33 @@
+<navigation-bar title="添加成员" />
+
+<view class="container">
+  <view class="form">
+    <view class="form-item">
+      <text class="label">姓名</text>
+      <input
+        class="input"
+        placeholder="请输入成员姓名"
+        value="{{name}}"
+        bindinput="onNameInput"
+      />
+    </view>
+    <view class="form-item">
+      <text class="label">初始积分</text>
+      <input
+        class="input"
+        type="number"
+        placeholder="默认为0"
+        value="{{initialScore}}"
+        bindinput="onScoreInput"
+      />
+    </view>
+    <button
+      class="btn-submit"
+      bindtap="handleSubmit"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+    >
+      确认添加
+    </button>
+  </view>
+</view>

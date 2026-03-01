@@ -1,0 +1,177 @@
+.score-card {
+  background: var(--card-bg);
+  border-radius: 16rpx;
+  padding: 48rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.score-value {
+  font-size: 72rpx;
+  font-weight: bold;
+}
+
+.score-value.positive {
+  color: var(--success);
+}
+
+.score-value.negative {
+  color: var(--danger);
+}
+
+.score-title {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-top: 8rpx;
+}
+
+.action-bar {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 76rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-outline {
+  background: var(--card-bg);
+  color: var(--primary);
+  border: 2rpx solid var(--primary);
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+.empty {
+  text-align: center;
+  padding: 60rpx 0;
+}
+
+.empty-text {
+  color: var(--text-secondary);
+  font-size: 28rpx;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.record-item {
+  display: flex;
+  gap: 20rpx;
+  min-height: 100rpx;
+}
+
+.record-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24rpx;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 8rpx;
+}
+
+.dot-green {
+  background: var(--success);
+}
+
+.dot-red {
+  background: var(--danger);
+}
+
+.line {
+  width: 4rpx;
+  flex: 1;
+  background: var(--border-color);
+  margin: 4rpx 0;
+}
+
+.record-content {
+  flex: 1;
+  background: var(--card-bg);
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.change {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.change.positive {
+  color: var(--success);
+}
+
+.change.negative {
+  color: var(--danger);
+}
+
+.balance {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.reason {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  margin-top: 8rpx;
+  display: block;
+}
+
+.time {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  margin-top: 8rpx;
+  display: block;
+}
+
+.btn-danger {
+  width: 100%;
+  height: 76rpx;
+  background: transparent;
+  color: var(--danger);
+  font-size: 28rpx;
+  border: 2rpx solid var(--danger);
+  border-radius: 12rpx;
+  margin-top: 48rpx;
+  margin-bottom: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
