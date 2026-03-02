@@ -80,9 +80,10 @@ else
   echo ".env 已存在，跳过"
 fi
 
-# ---------- 5. 启动服务 ----------
-echo "[4/4] 启动服务..."
+# ---------- 5. 停止旧服务、重建并启动 ----------
+echo "[4/4] 停止旧服务并重新部署..."
 cd "$APP_DIR/backend"
+docker compose down
 docker compose up --build -d
 
 # 等待服务就绪
