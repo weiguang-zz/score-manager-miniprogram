@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import auth, members, export
+from .routers import auth, members, export, staff, rooms, records
 
 app = FastAPI(title="积分管理系统")
 
@@ -16,6 +16,9 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(members.router)
 app.include_router(export.router)
+app.include_router(staff.router)
+app.include_router(rooms.router)
+app.include_router(records.router)
 
 
 @app.get("/api/health")

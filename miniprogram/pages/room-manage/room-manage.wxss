@@ -1,0 +1,111 @@
+.add-bar {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.add-input {
+  flex: 1;
+  height: 80rpx;
+  border: 2rpx solid var(--border-color);
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  background: var(--card-bg);
+  box-sizing: border-box;
+}
+
+.btn-add {
+  width: 160rpx;
+  height: 80rpx;
+  background: var(--primary);
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.empty {
+  text-align: center;
+  padding: 100rpx 0;
+}
+
+.empty-text {
+  color: var(--text-secondary);
+  font-size: 28rpx;
+}
+
+.room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.room-card {
+  background: var(--card-bg);
+  border-radius: 12rpx;
+  padding: 24rpx;
+}
+
+.room-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.room-name {
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.room-actions {
+  display: flex;
+  gap: 24rpx;
+}
+
+.action-btn {
+  font-size: 26rpx;
+  padding: 4rpx 0;
+}
+
+.action-btn.edit {
+  color: var(--primary);
+}
+
+.action-btn.delete {
+  color: var(--danger);
+}
+
+.action-btn.save {
+  color: var(--success);
+}
+
+.action-btn.cancel {
+  color: var(--text-secondary);
+}
+
+.room-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.edit-input {
+  height: 72rpx;
+  border: 2rpx solid var(--primary);
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 24rpx;
+}

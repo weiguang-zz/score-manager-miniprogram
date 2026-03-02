@@ -5,13 +5,20 @@ Component({
     allMembers: [],
     members: [],
     keyword: '',
-    loading: false
+    loading: false,
+    isAdmin: false,
+    canEdit: false
   },
   lifetimes: {
     attached: function () {
       if (!api.isLoggedIn()) {
         wx.redirectTo({ url: '/pages/login/login' })
+        return
       }
+      this.setData({
+        isAdmin: api.isAdmin(),
+        canEdit: api.canEdit()
+      })
     }
   },
   pageLifetimes: {
@@ -63,6 +70,18 @@ Component({
     },
     exportAll: function () {
       api.downloadExport('/api/export/members')
+    },
+    goRecordsQuery: function () {
+      wx.navigateTo({ url: '/pages/records-query/records-query' })
+    },
+    goRoomManage: function () {
+      wx.navigateTo({ url: '/pages/room-manage/room-manage' })
+    },
+    goStaffManage: function () {
+      wx.navigateTo({ url: '/pages/staff-manage/staff-manage' })
+    },
+    goChangePassword: function () {
+      wx.navigateTo({ url: '/pages/change-password/change-password' })
     },
     handleLogout: function () {
       wx.showModal({

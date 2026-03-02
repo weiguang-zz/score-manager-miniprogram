@@ -1,0 +1,63 @@
+<navigation-bar title="员工管理" />
+
+<view class="container">
+  <!-- 添加员工表单 -->
+  <view class="form-card">
+    <view class="form-title">添加员工</view>
+    <view class="form-item">
+      <text class="form-label">用户名</text>
+      <input
+        class="form-input"
+        placeholder="请输入用户名"
+        value="{{newUsername}}"
+        bindinput="onUsernameInput"
+      />
+    </view>
+    <view class="form-item">
+      <text class="form-label">密码</text>
+      <input
+        class="form-input"
+        type="text"
+        password="{{true}}"
+        placeholder="请输入密码（至少4位）"
+        value="{{newPassword}}"
+        bindinput="onPasswordInput"
+      />
+    </view>
+    <view class="form-item">
+      <text class="form-label">角色</text>
+      <picker mode="selector" range="{{roleOptions}}" range-key="label" value="{{roleIndex}}" bindchange="onRoleChange">
+        <view class="picker-value">{{roleOptions[roleIndex].label}}</view>
+      </picker>
+    </view>
+    <button class="btn btn-primary" bindtap="handleAddStaff" disabled="{{addLoading}}">
+      {{addLoading ? '添加中...' : '添加员工'}}
+    </button>
+  </view>
+
+  <!-- 员工列表 -->
+  <view class="section-title">员工列表</view>
+
+  <view wx:if="{{loading}}" class="empty">
+    <text>加载中...</text>
+  </view>
+  <view wx:elif="{{staffList.length === 0}}" class="empty">
+    <text class="empty-text">暂无员工</text>
+  </view>
+  <view wx:else class="staff-list">
+    <view wx:for="{{staffList}}" wx:key="id" class="staff-card">
+      <view class="staff-info">
+        <text class="staff-name">{{item.username}}</text>
+        <text class="staff-role">{{item.role === 'staff_editor' ? '编辑员工' : '只读员工'}}</text>
+      </view>
+      <view class="staff-actions">
+        <view class="action-link" data-id="{{item.id}}" data-role="{{item.role}}" bindtap="handleToggleRole">
+          切换角色
+        </view>
+        <view class="action-link danger" data-id="{{item.id}}" data-name="{{item.username}}" bindtap="handleDeleteStaff">
+          删除
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

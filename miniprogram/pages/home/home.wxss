@@ -37,6 +37,18 @@
   border: 2rpx solid var(--primary);
 }
 
+.admin-bar {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.admin-link {
+  font-size: 26rpx;
+  color: var(--primary);
+  padding: 8rpx 0;
+}
+
 .search-bar {
   display: flex;
   align-items: center;

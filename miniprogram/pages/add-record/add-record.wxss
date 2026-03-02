@@ -91,3 +91,19 @@
 .btn-submit[disabled] {
   opacity: 0.6;
 }
+
+.picker-value {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  border: 2rpx solid var(--border-color);
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  background: var(--card-bg);
+}
+
+.picker-value.placeholder {
+  color: var(--text-secondary);
+}

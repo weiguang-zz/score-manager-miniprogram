@@ -1,0 +1,55 @@
+<navigation-bar title="记录查询" />
+
+<view class="container">
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-row">
+      <text class="filter-label">日期</text>
+      <picker mode="date" bindchange="onDateChange" value="{{date}}">
+        <view class="filter-value">{{date}}</view>
+      </picker>
+    </view>
+    <view class="filter-row">
+      <text class="filter-label">直播间</text>
+      <picker mode="selector" range="{{roomNames}}" value="{{roomIndex}}" bindchange="onRoomChange">
+        <view class="filter-value">{{roomNames[roomIndex]}}</view>
+      </picker>
+    </view>
+    <button class="btn-query" bindtap="handleQuery" loading="{{loading}}" disabled="{{loading}}">查询</button>
+  </view>
+
+  <!-- 结果列表 -->
+  <view wx:if="{{queried && records.length === 0}}" class="empty">
+    <text class="empty-text">暂无记录</text>
+  </view>
+
+  <view wx:if="{{records.length > 0}}" class="record-list">
+    <view wx:for="{{records}}" wx:key="id" class="record-card">
+      <view class="record-top">
+        <text class="member-name">{{item.member_name}}</text>
+        <text class="change {{item.change_amount >= 0 ? 'positive' : 'negative'}}">
+          {{item.change_amount >= 0 ? '+' : ''}}{{item.change_amount}}
+        </text>
+      </view>
+      <view wx:if="{{item.reason}}" class="reason">{{item.reason}}</view>
+      <view class="record-bottom">
+        <text class="meta">{{item.created_at}}</text>
+        <text wx:if="{{item.operator_name}}" class="meta">操作: {{item.operator_name}}</text>
+        <text wx:if="{{item.room_name}}" class="meta room-tag">{{item.room_name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 合计栏 -->
+  <view wx:if="{{queried}}" class="summary-bar">
+    <view class="summary-item">
+      <text class="summary-label">总增加</text>
+      <text class="summary-value positive">+{{totalAdd}}</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-label">总减少</text>
+      <text class="summary-value negative">{{totalSub}}</text>
+    </view>
+  </view>
+</view>

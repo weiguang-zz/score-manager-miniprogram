@@ -20,3 +20,22 @@ def get_current_user(
     if user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="用户不存在")
     return user
+
+
+def get_data_owner_id(user: User) -> int:
+    """Return the admin user id that owns the data. Staff sees admin's data."""
+    if user.role == "admin":
+        return user.id
+    return user.admin_id
+
+
+def require_admin(user: User = Depends(get_current_user)) -> User:
+    if user.role != "admin":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="需要管理员权限")
+    return user
+
+
+def require_editor(user: User = Depends(get_current_user)) -> User:
+    if user.role not in ("admin", "staff_editor"):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="没有编辑权限")
+    return user

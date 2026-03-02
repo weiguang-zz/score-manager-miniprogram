@@ -4,7 +4,11 @@
     "pages/login/login",
     "pages/member/member",
     "pages/add-member/add-member",
-    "pages/add-record/add-record"
+    "pages/add-record/add-record",
+    "pages/change-password/change-password",
+    "pages/staff-manage/staff-manage",
+    "pages/room-manage/room-manage",
+    "pages/records-query/records-query"
   ],
   "window": {
     "navigationBarTextStyle": "black",

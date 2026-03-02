@@ -21,6 +21,14 @@
 
   <view class="form">
     <view class="form-item">
+      <text class="label">直播间</text>
+      <picker mode="selector" range="{{roomNames}}" value="{{roomIndex}}" bindchange="onRoomChange">
+        <view class="picker-value {{roomIndex >= 0 ? '' : 'placeholder'}}">
+          {{roomIndex >= 0 ? roomNames[roomIndex] : '请选择直播间'}}
+        </view>
+      </picker>
+    </view>
+    <view class="form-item">
       <text class="label">数值</text>
       <input
         class="input"

@@ -6,14 +6,22 @@ Component({
     name: '',
     currentScore: 0,
     records: [],
-    loading: false
+    loading: false,
+    canEdit: false,
+    startDate: '',
+    endDate: ''
   },
   methods: {
     onLoad: function (query) {
       var id = parseInt(query.id, 10)
       var name = decodeURIComponent(query.name || '')
       var score = parseInt(query.score, 10) || 0
-      this.setData({ id: id, name: name, currentScore: score })
+      this.setData({
+        id: id,
+        name: name,
+        currentScore: score,
+        canEdit: api.canEdit()
+      })
     },
     onShow: function () {
       this.loadRecords()
@@ -36,8 +44,15 @@ Component({
         url: '/pages/add-record/add-record?id=' + id + '&name=' + encodeURIComponent(name)
       })
     },
+    onStartDateChange: function (e) {
+      this.setData({ startDate: e.detail.value })
+    },
+    onEndDateChange: function (e) {
+      this.setData({ endDate: e.detail.value })
+    },
     exportRecords: function () {
-      api.downloadExport('/api/export/members/' + this.data.id + '/records')
+      var path = '/api/export/members/' + this.data.id + '/records'
+      api.downloadExport(path, this.data.startDate, this.data.endDate)
     },
     handleDelete: function () {
       var that = this

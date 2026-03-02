@@ -7,8 +7,20 @@
 <view class="container">
   <!-- 操作栏 -->
   <view class="action-bar">
-    <button class="btn btn-primary" bindtap="goAddMember">+ 添加成员</button>
+    <button wx:if="{{canEdit}}" class="btn btn-primary" bindtap="goAddMember">+ 添加成员</button>
     <button class="btn btn-outline" bindtap="exportAll">导出全部</button>
+  </view>
+
+  <!-- 管理入口 -->
+  <view wx:if="{{isAdmin}}" class="admin-bar">
+    <view class="admin-link" bindtap="goRecordsQuery">记录查询</view>
+    <view class="admin-link" bindtap="goRoomManage">直播间管理</view>
+    <view class="admin-link" bindtap="goStaffManage">员工管理</view>
+    <view class="admin-link" bindtap="goChangePassword">修改密码</view>
+  </view>
+  <view wx:elif="{{!isAdmin}}" class="admin-bar">
+    <view class="admin-link" bindtap="goRecordsQuery">记录查询</view>
+    <view class="admin-link" bindtap="goChangePassword">修改密码</view>
   </view>
 
   <!-- 搜索栏 -->
@@ -29,7 +41,7 @@
   </view>
   <view wx:elif="{{members.length === 0}}" class="empty">
     <text class="empty-text">暂无成员</text>
-    <text class="empty-sub">点击上方按钮添加成员</text>
+    <text wx:if="{{canEdit}}" class="empty-sub">点击上方按钮添加成员</text>
   </view>
   <view wx:else class="member-list">
     <view
